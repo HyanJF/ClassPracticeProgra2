@@ -7,8 +7,21 @@
 
 using namespace std;
 
+void Tarea1();
+
 int main()
 {
+	switch (switch_on)
+	{
+	case1:
+		Tarea1();
+	case2:
+
+	default:
+		break;
+	}
+
+
 	//vector<string> myStuff = { "Espada", "Martillo", "Bomba" };
 	//vector<string> inventory(10);
 	//vector<string> inventory(10, " - ");
@@ -40,3 +53,7 @@ int main()
 	} while (i < inventory.size());
 }
 
+void Tarea1()
+{
+
+}
