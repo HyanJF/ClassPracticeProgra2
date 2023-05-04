@@ -3,23 +3,104 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
+#include <cstdlib>
 
-<
+void vector1();
+void vectores2();
+void Jueguito();
+
 using namespace std;
 
 int main()
 {
-	switch (true)
+	vector<string> Palabras;
+
+	Palabras.push_back("Comadreja");
+	Palabras.push_back("Anguila");
+	Palabras.push_back("Conejo");
+	Palabras.push_back("Cocodrilo");
+	Palabras.push_back("Cabra");
+
+	srand(time(NULL));
+	random_shuffle(Palabras[2].begin(), Palabras[2].end());
+	cout << Palabras[2] << endl;
+
+
+}
+
+void vectores2()
+{
+	const int NUM_SCORES = 4;
+	int score;
+
+	vector<int>::const_iterator iter;
+
+	vector<int> scores;
+
+	for (int i = 0; i < NUM_SCORES; i++)
 	{
-	case1:
-
-	case2:
-
-	default:
-		break;
+		cout << "Score " << i + 1 << endl;
+		cin >> score;
+		scores.push_back(score);
 	}
 
+	cout << "Puntajes" << endl;
+	for (iter = scores.begin(); iter != scores.end(); iter++)
+	{
+		cout << *iter << endl;
+	}
 
+	/*Find*/
+	cout << "Buscar puntajes: Ingresa el puntaje que quieres buscar" << endl;
+	cin >> score;
+
+	iter = find(scores.begin(), scores.end(), score);
+
+	if (iter != scores.end())
+	{
+		cout << "\nTu puntaje se encuentra en el vector\n";
+	}
+	else
+	{
+		cout << "\nNo encontramos el puntaje que buscas\n";
+	}
+
+	/*Random Shuffle*/
+
+	srand(time(NULL));
+	random_shuffle(scores.begin(), scores.end());
+	cout << "\nScores Mezclados\n";
+	for (iter = scores.begin(); iter != scores.end(); iter++)
+	{
+		cout << *iter << endl;
+	}
+
+	//Shuffle String 
+	string word = "perro";
+	random_shuffle(word.begin(), word.end());
+	cout << word << endl;
+
+	/*Sort*/
+	cout << "\nCambiar orden \n";
+	sort(scores.begin(), scores.end());
+	for (iter = scores.begin(); iter != scores.end(); iter++)
+	{
+		cout << *iter << endl;
+	}
+
+	cout << "\nCambiar orden  greater\n";
+	sort(scores.begin(), scores.end(), greater<int>());
+	for (iter = scores.begin(); iter != scores.end(); iter++)
+	{
+		cout << *iter << endl;
+	}
+
+}
+
+
+void vector1()
+{
 	//vector<string> myStuff = { "Espada", "Martillo", "Bomba" };
 	//vector<string> inventory(10);
 	//vector<string> inventory(10, " - ");
@@ -115,6 +196,5 @@ int main()
 			cout << Items[i] << endl;
 		}
 	}
-
-
 }
+
