@@ -14,20 +14,67 @@ using namespace std;
 
 int main()
 {
-	vector<string> Palabras;
-
-	Palabras.push_back("Comadreja");
-	Palabras.push_back("Anguila");
-	Palabras.push_back("Conejo");
-	Palabras.push_back("Cocodrilo");
-	Palabras.push_back("Cabra");
-
-	srand(time(NULL));
-	random_shuffle(Palabras[2].begin(), Palabras[2].end());
-	cout << Palabras[2] << endl;
-
-
+	Jueguito();
 }
+
+void Jueguito() 
+{
+	vector<string> Palabras;
+	int vida = 3;
+	Palabras.push_back("comadreja");
+	Palabras.push_back("anguila");
+	Palabras.push_back("conejo");
+	Palabras.push_back("cocodrilo");
+	Palabras.push_back("cabra");
+	string Respuesta;
+	int Puntaje = 0;
+	bool Victoria = false;
+	int put;
+	srand(time(NULL));
+
+	cout << "Bienvenido a Adivina la palabra" << endl;
+	cout << "Tienes 3 vidas si llegas a 0 entonces es el fin del juego" << endl;
+	cout << "Tienes que adivinar las palabras" << endl;
+	cout << "Estas listo comenzamos" << endl;
+	do
+	{
+		put = 0;
+		int Azar;
+		Azar = 1 + (rand() % 4);
+		random_shuffle(Palabras[Azar].begin(), Palabras[Azar].end());
+		cout << "La palabra es " << Palabras[Azar] << endl;
+		cin >> Respuesta;
+
+		Palabras[Azar] == Respuesta ?
+			put == 2 : put == 1;
+
+		if (put == 2)
+		{
+			Puntaje++;
+
+			if (Puntaje == 5)
+			{
+				Victoria = true;
+			}
+		}
+		else
+		{
+			vida = vida - 1;
+		}
+
+	} while (Victoria = false || vida != 0);
+
+
+	if (vida == 0)
+	{
+		cout << "Lo siento perdiste el juego TnT" << endl;
+	}
+	else
+	{
+		cout << "Felicidades acabas de ganar OwO" << endl;
+	}
+}
+
 
 void vectores2()
 {
@@ -95,7 +142,6 @@ void vectores2()
 	{
 		cout << *iter << endl;
 	}
-
 }
 
 
