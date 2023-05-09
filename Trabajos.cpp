@@ -7,14 +7,63 @@
 #include <cstdlib>
 
 void vector1();
-void vectores2();
+void iterators();
 void Jueguito();
 
 using namespace std;
 
 int main()
 {
-	Jueguito();
+	vector<string> Inventory;
+	Inventory.push_back("Espada");
+	Inventory.push_back("Escudo");
+	Inventory.push_back("Mazo");
+	Inventory.push_back("Arco");
+
+	vector<string>::iterator myIterator;
+	vector<string>::const_iterator iter;
+	
+	cout << "\nTus Items: \n";
+	for (iter = Inventory.begin(); iter != Inventory.end(); iter++)
+	{
+		cout << *iter << endl;
+	}
+
+	//intercambiar 
+	cout << "\nIntercambiaste tu " << Inventory[2] << " Por un Arco";
+	myIterator = Inventory.begin() + 2;
+	*myIterator = "Arco";
+	cout << "\nTus items: \n";
+	for (iter = Inventory.begin(); iter != Inventory.end(); iter++)
+	{
+		cout << *iter << endl;
+	}
+
+
+	//SIZE
+	cout << "\n El nombre del item " << *myIterator << " tiene " << endl;
+	cout << (*myIterator).size() << " letras" << endl;
+
+	cout << "\n El nombre del item " << *myIterator << " tiene " << endl;
+	cout << (myIterator)->size() << " letras" << endl;
+
+	//INSERT
+	cout << "\n\nRecuperaste la bomba robada ";
+	Inventory.insert(Inventory.begin() + 4, "Bomba");
+	cout << "\nTus Items: \n";
+	for (iter = Inventory.begin(); iter != Inventory.end(); iter++)
+	{
+		cout << *iter << endl;
+	}
+
+	//DELETE
+	cout << "\nTu " << Inventory[1] << "fue destruido en batalla.";
+	Inventory.erase(Inventory.begin() + 1);
+	cout << "\nTus Items: \n";
+	for (iter = Inventory.begin(); iter != Inventory.end(); iter++)
+	{
+		cout << *iter << endl;
+	}
 }
 
 void Jueguito() 
@@ -76,7 +125,7 @@ void Jueguito()
 }
 
 
-void vectores2()
+void iterators()
 {
 	const int NUM_SCORES = 4;
 	int score;
