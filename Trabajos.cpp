@@ -8,11 +8,17 @@
 
 void vector1();
 void iterators();
+void iterInventory();
 void Jueguito();
 
 using namespace std;
 
 int main()
+{
+
+}
+
+void iterInventory()
 {
 	vector<string> Inventory;
 	Inventory.push_back("Espada");
@@ -22,7 +28,7 @@ int main()
 
 	vector<string>::iterator myIterator;
 	vector<string>::const_iterator iter;
-	
+
 	cout << "\nTus Items: \n";
 	for (iter = Inventory.begin(); iter != Inventory.end(); iter++)
 	{
