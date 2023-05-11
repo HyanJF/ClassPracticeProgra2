@@ -6,16 +6,96 @@
 #include <algorithm>
 #include <cstdlib>
 
+void Ahorcado();
 void vector1();
 void iterators();
 void iterInventory();
 void Jueguito();
+void guessTheWord();
 
 using namespace std;
 
 int main()
 {
+	Ahorcado();
+}
 
+void Ahorcado() {
+	vector<string> Game;
+	Game.push_back("ESPADA");
+	Game.push_back("ESCUDO");
+	Game.push_back("MAZO");
+	Game.push_back("ARCO");
+	Game.push_back("COMPUTADORA");
+	Game.push_back("JUEGO");
+	Game.push_back("CODIGO");
+	Game.push_back("REFRIGERADOR");
+	Game.push_back("COMADREJA");
+	Game.push_back("ANGUILA");
+	Game.push_back("CONEJO");
+	Game.push_back("COCODRILO");
+	Game.push_back("CABRA");
+
+	srand(time(NULL));
+	int randomNumber = rand();
+	int wordsRandomIndex = (randomNumber % Game.size());
+	string wordSelected = Game[wordsRandomIndex];
+
+	vector<string>::iterator myIterator;
+	vector<string>::const_iterator iter;
+
+	string correctWord = "123456";
+	int intentos = 0;
+	const int VIDAS = 5;
+
+
+	cout << "\nJuego del ahoracado bienvenido Jugador " << endl;
+	cout << "Tienes 5 vidas para adivinar la palabra, si fallas eres muy malo >W<, y si ganas sin duda eres un genio OwO " << endl;
+	cout << "Comenzamos de una vez Owo " << endl;
+	cout << endl << endl;
+
+	do
+	{
+		for (unsigned int i = 0; i < wordSelected.size(); i++)
+		{
+			if (correctWord[i] == wordSelected[i])
+			{
+				cout << wordSelected[i];
+			}
+			else
+			{
+				cout << "-";
+			}
+		}
+		cout << endl;
+
+		cin >> correctWord;
+		transform(correctWord.begin(), correctWord.end(), correctWord.begin(), ::toupper);
+		//cout << correctWord << endl;
+
+		if (correctWord == Game[wordsRandomIndex])
+		{
+			intentos++;
+			cout << "\nAdivinaste la palabra!!!\n";
+			break;
+		}
+		else
+		{
+			intentos++;
+			cout << "Fallaste humano inepto, te quedan " << VIDAS - intentos << endl;
+		}
+
+	} while (intentos != VIDAS);
+
+	if (intentos == VIDAS)
+	{
+		cout << "\nPerdiste, date de baja, la palabra era:  \n";
+		cout << Game[wordsRandomIndex];
+	}
+	else
+	{
+		cout << "\nMUY BIEN!! lo hiciste en: " << intentos << " intentos." << endl;
+	}
 }
 
 void iterInventory()
@@ -70,6 +150,61 @@ void iterInventory()
 	{
 		cout << *iter << endl;
 	}
+}
+
+void guessTheWord()
+{
+	const int MAX_ATTEMPTS = 3;
+	int attempts = 0;
+
+	vector<string> words;
+	words.push_back("COMPUTADORA");
+	words.push_back("JUEGO");
+	words.push_back("CODIGO");
+	words.push_back("REFRIGERADOR");
+
+	srand(time(NULL));
+	int randomNumber = rand();
+	int wordsRandomIndex = (randomNumber % words.size());
+	string wordSelected = words[wordsRandomIndex];
+
+	//cout << wordSelected << endl;
+
+	random_shuffle(wordSelected.begin(), wordSelected.end());
+	cout << wordSelected << endl;
+
+	string correctWord;
+
+	do
+	{
+		cin >> correctWord;
+		transform(correctWord.begin(), correctWord.end(), correctWord.begin(), ::toupper);
+		//cout << correctWord << endl;
+
+		if (correctWord == words[wordsRandomIndex])
+		{
+			attempts++;
+			cout << "\nAdivinaste la palabra!!!\n";
+			break;
+		}
+		else
+		{
+			attempts++;
+			cout << "Fallaste humano inepto, te quedan " << MAX_ATTEMPTS - attempts << endl;
+		}
+
+	} while (attempts != MAX_ATTEMPTS);
+
+	if (attempts == MAX_ATTEMPTS)
+	{
+		cout << "\nPerdiste, date de baja, la palabra era:  \n";
+		cout << words[wordsRandomIndex];
+	}
+	else
+	{
+		cout << "\nMUY BIEN!! lo hiciste en: " << attempts << " intentos.";
+	}
+
 }
 
 void Jueguito() 
@@ -129,7 +264,6 @@ void Jueguito()
 		cout << "Felicidades acabas de ganar OwO" << endl;
 	}
 }
-
 
 void iterators()
 {
@@ -198,7 +332,6 @@ void iterators()
 		cout << *iter << endl;
 	}
 }
-
 
 void vector1()
 {
