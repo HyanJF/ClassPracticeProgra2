@@ -12,12 +12,25 @@ void iterators();
 void iterInventory();
 void Jueguito();
 void guessTheWord();
+int Score(int, int);
 
 using namespace std;
 
 int main()
 {
-	Ahorcado();
+	int Score1 = 20, Score2 = 100;
+	cout << "Score 1 es de " << Score1 << " Y " << "Score 2 es de " << Score2 << endl;
+	Score(Score1, Score2);
+	cout << "Score 1 es de " << Score1 << " Y " << "Score 2 es de " << Score2 << endl;
+	
+}
+
+int Score(int a, int b)
+{
+	int Valor1 = b, Valor2 = a;
+	a = Valor1;
+	b = Valor2;
+	return a, b;
 }
 
 void Ahorcado() {
